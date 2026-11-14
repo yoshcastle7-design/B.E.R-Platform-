@@ -1,0 +1,262 @@
+
+/* ==================================
+   B.E.R. MARKETPLACE
+   Design mobile-first
+================================== */
+
+.market-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 5%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.market-logo {
+  font-size: 21px;
+  font-weight: 800;
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.market-logo span {
+  color: #2563eb;
+}
+
+.market-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.market-nav a {
+  color: #334155;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.market-hero {
+  padding: 55px 6%;
+  text-align: center;
+  background: #eff6ff;
+}
+
+.market-label {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.market-hero h1 {
+  font-size: clamp(26px, 5vw, 42px);
+  color: #1e293b;
+  margin: 18px 0;
+}
+
+.market-hero p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+#marketSearchForm {
+  display: flex;
+  max-width: 600px;
+  margin: 25px auto 0;
+  gap: 8px;
+}
+
+#marketSearch {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+#marketSearchForm button {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+.market-section {
+  padding: 30px 5%;
+}
+
+.market-section h2 {
+  color: #1e293b;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.market-categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.market-categories button {
+  flex-shrink: 0;
+  padding: 11px 17px;
+  border: 1px solid #cbd5e1;
+  border-radius: 25px;
+  background: white;
+  color: #334155;
+}
+
+.market-categories button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+  gap: 18px;
+}
+
+.market-seller {
+  margin: 25px 5%;
+  padding: 30px 20px;
+  text-align: center;
+  background: #eff6ff;
+  border-radius: 16px;
+}
+
+.market-seller h2 {
+  color: #1e293b;
+}
+
+.market-seller p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.market-seller a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 13px 20px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.market-footer {
+  padding: 22px;
+  text-align: center;
+  background: #1e293b;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .market-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .market-nav {
+    gap: 12px;
+  }
+
+  #marketSearchForm {
+    flex-direction: column;
+  }
+
+  #marketSearchForm button {
+    width: 100%;
+  }
+
+  .market-section {
+    padding: 25px 16px;
+  }
+}
+
+
+/* CARTES PRODUITS ET BOUTIQUES */
+
+.market-product,
+.market-shop {
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+}
+
+.market-product h3,
+.market-shop h3 {
+  margin: 0 0 12px;
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.market-product p,
+.market-shop p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.market-product strong {
+  display: block;
+  margin-top: 14px;
+  color: #2563eb;
+  font-size: 17px;
+}
+
+.market-shop span {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.sales-product-card {
+  overflow: hidden;
+  padding: 18px;
+  margin: 16px 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.sales-product-card h3 {
+  margin: 0 0 14px;
+  color: #172554;
+  font-size: 19px;
+}
+
+.sales-product-card img {
+  width: 100%;
+  max-width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 5px 0;
+}
+
+.sales-product-card p {
+  color: #475569;
+  line-height: 1.5;
+}
+
+.sales-product-card strong {
+  color: #1d4ed8;
+}
+
