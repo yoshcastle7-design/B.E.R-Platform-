@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="Consultez votre espace achats sur B.E.R. Marketplace.">
+  <title>Mes achats — B.E.R.</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/marketplace.css">
+  <style>
+    .purchases-container {
+      width: min(900px, calc(100% - 28px));
+      margin: 28px auto;
+    }
+    .purchases-card {
+      padding: 24px;
+      margin-bottom: 20px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: 0 5px 18px rgba(15, 23, 42, .05);
+    }
+    .purchases-card h1, .purchases-card h2 {
+      margin-top: 0;
+      color: #172554;
+    }
+    .purchases-card p {
+      color: #64748b;
+      line-height: 1.65;
+    }
+    .purchase-empty {
+      padding: 30px 18px;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 15px;
+    }
+    .purchase-empty .purchase-icon {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 38px;
+    }
+    .purchase-action {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 19px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .purchase-note {
+      padding: 14px;
+      border-left: 4px solid #2563eb;
+      border-radius: 8px;
+      background: #eff6ff;
+      color: #1e40af;
+      line-height: 1.6;
+    }
+    #purchaseAuthStatus {
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .purchases-container { margin: 14px auto; }
+      .purchases-card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="market-header">
+    <a href="marketplace.html" class="market-logo">B.E.R. <span>Marketplace</span></a>
+    <nav class="market-nav" aria-label="Navigation Marketplace">
+      <a href="marketplace.html">Marketplace</a>
+      <a href="sales.html">Mes ventes</a>
+      <a href="purchases.html" aria-current="page">Mes achats</a>
+      <a href="../dashboard.html">Tableau de bord</a>
+    </nav>
+  </header>
+
+  <main class="purchases-container">
+    <section class="purchases-card">
+      <h1>Mes achats</h1>
+      <p>Retrouvez dans cet espace vos commandes et le suivi de vos achats effectués sur B.E.R. Marketplace.</p>
+      <p id="purchaseAuthStatus" role="status" aria-live="polite">Vérification de votre connexion…</p>
+    </section>
+
+    <section class="purchases-card">
+      <h2>Historique des commandes</h2>
+      <div class="purchase-empty">
+        <span class="purchase-icon" aria-hidden="true">🛍️</span>
+        <h2>Votre historique d’achats apparaîtra ici</h2>
+        <p>L’espace est créé, mais l’enregistrement et l’affichage des commandes ne sont pas encore connectés à la base de données.</p>
+        <a class="purchase-action" href="marketplace.html">Découvrir les produits</a>
+      </div>
+    </section>
+
+    <p class="purchase-note">
+      <strong>À savoir :</strong> aucun achat n’est affiché pour le moment. Le suivi des commandes sera activé après la mise en place du système de commandes et de paiement.
+    </p>
+  </main>
+
+  <footer class="market-footer">
+    <p>© B.E.R. Platform — Mes achats</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const status = document.getElementById("purchaseAuthStatus");
+      const supabase = window.berSupabase;
+
+      if (!supabase) {
+        status.textContent = "Connexion à Supabase indisponible.";
+        return;
+      }
+
+      try {
+        const { data: { user }, error } = await supabase.auth.getUser();
+
+        if (error) throw error;
+
+        status.textContent = user
+          ? "Vous êtes connecté. Votre espace achats est prêt."
+          : "Vous n’êtes pas connecté. Connectez-vous pour accéder à votre espace personnel.";
+      } catch (error) {
+        console.error("Vérification de session impossible :", error);
+        status.textContent = "Impossible de vérifier votre connexion pour le moment.";
+      }
+    });
+  </script>
+</body>
+</html>
