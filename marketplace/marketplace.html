@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+
+  <title>B.E.R. Marketplace</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/marketplace.css">
+</head>
+
+<body>
+
+  <header class="market-header">
+    <a href="../index.html" class="market-logo">
+      B.E.R. <span>Marketplace</span>
+    </a>
+
+    <nav class="market-nav">
+      <a href="../index.html">Accueil</a>
+      <a href="#catalogue">Produits</a>
+      <a href="#boutiques">Boutiques</a>
+      <a href="sales.html">Mes ventes</a>
+      <a href="purchases.html">Mes achats</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="market-hero">
+      <span class="market-label">BUSINESS • COMMERCE • SERVICES</span>
+
+      <h1>Découvrez le Marketplace B.E.R.</h1>
+
+      <p>
+        Achetez et découvrez les produits des entreprises
+        et des vendeurs individuels.
+      </p>
+
+      <form id="marketSearchForm">
+        <input
+          type="search"
+          id="marketSearch"
+          placeholder="Que recherchez-vous ?"
+          aria-label="Rechercher un produit"
+        >
+        <button type="submit">Rechercher</button>
+      </form>
+    </section>
+
+    <section class="market-section">
+      <h2>Explorer les catégories</h2>
+
+      <div class="market-categories">
+        <button data-category="all" class="active">Tout</button>
+        <button data-category="electronics">Électronique</button>
+        <button data-category="clothing">Vêtements</button>
+        <button data-category="food">Alimentation</button>
+        <button data-category="services">Services</button>
+      </div>
+    </section>
+
+    <section id="catalogue" class="market-section">
+      <h2>Produits disponibles</h2>
+
+      <div id="marketProducts" class="market-grid">
+        <p>Le catalogue sera bientôt disponible.</p>
+      </div>
+    </section>
+
+    <section id="boutiques" class="market-section">
+      <h2>Découvrir les boutiques</h2>
+
+      <div id="marketShops" class="market-grid">
+        <p>Les boutiques B.E.R. apparaîtront ici.</p>
+      </div>
+    </section>
+
+    <section class="market-seller">
+      <h2>Vous êtes vendeur ?</h2>
+
+      <p>
+        Présentez vos produits et développez votre activité
+        sur B.E.R. Marketplace.
+      </p>
+
+      <a href="../dashboard.html">
+        Accéder à mon espace vendeur
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="market-footer">
+    <p>© B.E.R. Platform — Marketplace</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../supabase.js"></script>
+  <script src="../js/marketplace/catalog.js"></script>
+
+</body>
+</html>

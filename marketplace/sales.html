@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+
+  <title>Mes ventes — B.E.R.</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/marketplace.css">
+
+  
+<style>
+  .sales-container {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 16px;
+  }
+
+  .sales-card {
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, .05);
+  }
+
+  .sales-card h1,
+  .sales-card h2 {
+    color: #172554;
+    margin-top: 0;
+  }
+
+  .sales-card p {
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  #addProductForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #addProductForm label {
+    color: #334155;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  #addProductForm input,
+  #addProductForm select,
+  #addProductForm textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 11px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 16px;
+    outline: none;
+  }
+
+  #addProductForm input:focus,
+  #addProductForm select:focus,
+  #addProductForm textarea:focus {
+    border-color: #2563eb;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+  }
+
+  #addProductForm textarea {
+    min-height: 115px;
+    resize: vertical;
+  }
+
+  #productImages {
+    border: 2px dashed #93c5fd !important;
+    background: #eff6ff !important;
+    padding: 18px !important;
+  }
+
+  .sales-action {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .sales-action:active {
+    transform: scale(.98);
+  }
+
+  #productFormMessage {
+    font-weight: 600;
+  }
+
+  #salesProducts .market-product {
+    padding: 15px;
+    margin: 12px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #f8fafc;
+  }
+
+  .delete-product-btn {
+    padding: 10px 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 9px;
+    background: #fee2e2;
+    color: #b91c1c;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .sales-container {
+      margin: 12px auto;
+      padding: 12px;
+    }
+
+    .sales-card {
+      padding: 17px;
+      border-radius: 15px;
+    }
+  }
+  #productFormMessage {
+  animation: messageAppear 0.3s ease-out;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  
+</style>
+
+</head>
+
+<body>
+
+  <header class="market-header">
+    <a href="marketplace.html" class="market-logo">
+      B.E.R. <span>Marketplace</span>
+    </a>
+
+    <nav class="market-nav">
+      <a href="marketplace.html">Marketplace</a>
+      <a href="purchases.html">Mes achats</a>
+      <a href="../dashboard.html">Tableau de bord</a>
+    </nav>
+  </header>
+
+  <main class="sales-container">
+
+    <section class="sales-card">
+      <h1>Mon espace vendeur</h1>
+      <p>
+        Gérez votre boutique, vos produits et vos ventes
+        depuis votre espace B.E.R.
+      </p>
+    </section>
+
+    <section class="sales-card">
+      <h2>Mes produits</h2>
+      <p>
+        Retrouvez ici les produits que vous avez ajoutés,
+        ainsi que leur statut de validation.
+      </p>
+
+   <div id="salesProducts">
+  <p>Chargement de tes produits...</p>
+</div>
+    </section>
+
+  
+<section class="sales-card">
+  <h2>Ajouter un produit</h2>
+
+  <form id="addProductForm">
+
+    <label for="productName">Nom du produit</label>
+    <input
+      type="text"
+      id="productName"
+      required
+      maxlength="100"
+      placeholder="Ex. Téléphone Samsung"
+    >
+
+    <label for="productCategory">Catégorie</label>
+    <select id="productCategory" required>
+      <option value="">Choisir une catégorie</option>
+      <option value="electronics">Électronique</option>
+      <option value="clothing">Vêtements</option>
+      <option value="food">Alimentation</option>
+      <option value="services">Services</option>
+      <option value="other">Autre</option>
+    </select>
+
+    <label for="productDescription">Description</label>
+    <label for="productImages">
+  Photos du produit
+</label>
+
+
+<input
+  type="file"
+  id="productImages"
+  name="productImages"
+  accept="image/*"
+  multiple
+>
+
+<p class="sales-hint">📸 Ajoute jusqu'à 5 photos (5 Mo maximum par photo).</p>
+
+
+<p id="imageCount" class="sales-hint">
+  0 photo sélectionnée sur 5
+</p>
+
+<div id="imagePreview"
+     style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+</div>
+
+<div id="uploadProgress" style="display:none;margin-top:15px;">
+  <p id="uploadProgressText">Préparation des photos...</p>
+  <div style="height:10px;background:#e2e8f0;border-radius:20px;overflow:hidden;">
+    <div id="uploadProgressBar"
+         style="height:100%;width:0%;background:#2563eb;transition:width .3s;">
+    </div>
+  </div>
+</div>
+
+
+    <textarea
+      id="productDescription"
+      maxlength="2000"
+      placeholder="Décrivez votre produit..."
+    ></textarea>
+
+    <label for="productPrice">Prix (XOF)</label>
+    <input
+      type="number"
+      id="productPrice"
+      min="0"
+      step="1"
+      required
+      placeholder="Ex. 25000"
+    >
+
+    <label for="productStock">Stock disponible</label>
+    <input
+      type="number"
+      id="productStock"
+      min="0"
+      step="1"
+      required
+      value="1"
+    >
+
+    <button type="submit" class="sales-action">
+      Enregistrer le produit
+    </button>
+
+    <div id="productFormMessage"
+     role="status"
+     aria-live="polite"
+     style="
+       display:none;
+       padding:14px;
+       margin-top:12px;
+       border-radius:12px;
+       font-weight:600;
+       line-height:1.5;
+     ">
+</div>
+
+  </form>
+</section>
+
+
+  </main>
+
+  <footer class="market-footer">
+    <p>© B.E.R. Platform — Mes ventes</p>
+  </footer>
+  
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("productImages");
+  const preview = document.getElementById("imagePreview");
+  const count = document.getElementById("imageCount");
+
+  if (!input || !preview || !count) return;
+
+  let previewUrls = [];
+
+  input.addEventListener("change", () => {
+    previewUrls.forEach(url => URL.revokeObjectURL(url));
+    previewUrls = [];
+    preview.innerHTML = "";
+
+    const files = Array.from(input.files || []);
+
+    if (files.length > 5) {
+      alert("Choisis 5 photos maximum.");
+      input.value = "";
+      count.textContent = "0 photo sélectionnée sur 5";
+      return;
+    }
+
+    count.textContent =
+      files.length + " photo(s) sélectionnée(s) sur 5";
+
+    files.forEach(file => {
+      if (!file.type.startsWith("image/")) return;
+
+      const url = URL.createObjectURL(file);
+      previewUrls.push(url);
+
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = "Aperçu du produit";
+      img.style.width = "90px";
+      img.style.height = "90px";
+      img.style.objectFit = "cover";
+      img.style.borderRadius = "12px";
+      img.style.border = "1px solid #cbd5e1";
+
+      preview.appendChild(img);
+    });
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const priceInput = document.getElementById("productPrice");
+
+  if (!priceInput) return;
+
+  const priceDisplay = document.createElement("p");
+  priceDisplay.id = "pricePreview";
+  priceDisplay.style.color = "#2563eb";
+  priceDisplay.style.fontWeight = "700";
+  priceDisplay.style.fontSize = "18px";
+
+  priceInput.insertAdjacentElement("afterend", priceDisplay);
+
+  function updatePrice() {
+    const value = Number(priceInput.value);
+
+    priceDisplay.textContent =
+      priceInput.value !== "" && Number.isFinite(value) && value >= 0
+        ? value.toLocaleString("fr-FR") + " FCFA"
+        : "Le prix apparaîtra ici";
+  }
+
+  priceInput.addEventListener("input", updatePrice);
+  updatePrice();
+});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../supabase.js"></script>
+<script src="../js/marketplace/sales.js"></script>
+
+</body>
+</html>
