@@ -1,0 +1,735 @@
+
+/* =====================================
+   B.E.R. PLATFORM — DASHBOARD
+   Version 0.0.0.1
+===================================== */
+
+:root {
+  --ber-bg: #080d20;
+  --ber-panel: #111a32;
+  --ber-panel-light: #192642;
+  --ber-border: rgba(255,255,255,.09);
+  --ber-text: #f3f6ff;
+  --ber-muted: #a7b3cc;
+  --ber-blue: #5488ff;
+  --ber-purple: #9871ff;
+  --ber-radius: 20px;
+}
+
+/* Fond général */
+
+body:has(.dashboard-universes) {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ber-text);
+  background:
+    radial-gradient(ellipse at top left, #182b55 0%, transparent 45%),
+    radial-gradient(ellipse at bottom right, #241b50 0%, transparent 40%),
+    var(--ber-bg);
+  font-family: Arial, sans-serif;
+}
+
+/* Conteneur */
+
+body:has(.dashboard-universes) .auth-container {
+  width: min(1100px, 94%);
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 0;
+}
+
+/* En-tête */
+
+body:has(.dashboard-universes) .auth-header {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+body:has(.dashboard-universes) .auth-header h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #72a5ff, #bd8aff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body:has(.dashboard-universes) .auth-header p {
+  color: var(--ber-muted);
+  margin-top: 7px;
+}
+
+/* Carte principale */
+
+body:has(.dashboard-universes) .auth-card {
+  padding: 30px;
+  border: 1px solid var(--ber-border);
+  border-radius: var(--ber-radius);
+  background: rgba(17, 26, 50, .92);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+body:has(.dashboard-universes) .auth-card > h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+body:has(.dashboard-universes) #userEmail {
+  padding: 14px 16px;
+  margin: 18px 0 30px;
+  color: #c7d6ff;
+  background: rgba(84,136,255,.10);
+  border: 1px solid rgba(84,136,255,.22);
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* Titre des univers */
+
+body:has(.dashboard-universes) .auth-card > h3 {
+  margin-bottom: 18px;
+  font-size: 20px;
+}
+
+/* Grille des univers */
+
+body:has(.dashboard-universes) .dashboard-universes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0;
+}
+
+/* Cartes */
+
+body:has(.dashboard-universes) .dashboard-universes .universe-card {
+  display: block;
+  min-width: 0;
+  padding: 22px;
+  color: var(--ber-text);
+  text-decoration: none;
+  background: linear-gradient(
+    145deg,
+    #192b4c,
+    #111a32
+  );
+  border: 1px solid var(--ber-border);
+  border-radius: 17px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+body:has(.dashboard-universes) .dashboard-universes .universe-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--ber-blue);
+}
+
+body:has(.dashboard-universes) .universe-card h3 {
+  margin-top: 0;
+  font-size: 19px;
+}
+
+body:has(.dashboard-universes) .universe-card p {
+  margin-bottom: 0;
+  color: var(--ber-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Message */
+
+body:has(.dashboard-universes) #dashboardMessage {
+  min-height: 22px;
+  margin: 20px 0;
+  color: #a9c4ff;
+  font-size: 14px;
+}
+
+/* Bouton déconnexion */
+
+body:has(.dashboard-universes) #logoutButton {
+  padding: 13px 21px;
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(100deg, #456fe4, #7654d9);
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+body:has(.dashboard-universes) #logoutButton:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* Pied de page */
+
+body:has(.dashboard-universes) footer {
+  padding: 25px 10px;
+  color: var(--ber-muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Adaptation mobile */
+
+@media (max-width: 700px) {
+  body:has(.dashboard-universes) .auth-container {
+    width: 92%;
+    padding: 24px 0;
+  }
+
+  body:has(.dashboard-universes) .auth-card {
+    padding: 21px;
+  }
+
+  body:has(.dashboard-universes) .dashboard-universes {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  body:has(.dashboard-universes) .auth-card > h2 {
+    font-size: 23px;
+  }
+
+  body:has(.dashboard-universes) .dashboard-universes .universe-card {
+    padding: 19px;
+  }
+}
+
+
+/* =====================================
+   B.E.R. — NAVIGATION ET MODULES
+===================================== */
+
+.dashboard-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 22px 0;
+  padding: 15px;
+  background: rgba(17, 26, 50, .85);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+}
+
+.dashboard-navigation a {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  color: #c8d5f0;
+  background: #192642;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  transition: .2s ease;
+}
+
+.dashboard-navigation a:hover {
+  color: white;
+  background: #3157a0;
+  border-color: #5488ff;
+}
+
+.dashboard-section {
+  margin-top: 35px;
+  scroll-margin-top: 20px;
+}
+
+.dashboard-section > h3 {
+  margin-bottom: 17px;
+  color: #f3f6ff;
+}
+
+.dashboard-placeholder {
+  padding: 22px;
+  color: #a7b3cc;
+  background: linear-gradient(145deg, #192b4c, #111a32);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+  line-height: 1.7;
+}
+
+.dashboard-placeholder p:last-child {
+  margin-bottom: 0;
+}
+
+.dashboard-main {
+  overflow-wrap: anywhere;
+}
+
+.dashboard-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+
+#messageStatus {
+  color: #91b7ff;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .dashboard-navigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .dashboard-navigation a {
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 6px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .dashboard-section {
+    margin-top: 28px;
+  }
+
+  .dashboard-placeholder {
+    padding: 17px;
+  }
+
+  .dashboard-actions {
+    justify-content: stretch;
+  }
+
+  .dashboard-actions #logoutButton {
+    width: 100%;
+  }
+}
+
+
+
+/* =====================================
+   B.E.R. — FINITIONS DU DASHBOARD
+===================================== */
+
+.dashboard-navigation a:focus-visible,
+.universe-card:focus-visible,
+#logoutButton:focus-visible {
+  outline: 3px solid #8db4ff;
+  outline-offset: 3px;
+}
+
+.dashboard-navigation a:active,
+.dashboard-universes .universe-card:active {
+  transform: scale(.98);
+}
+
+.dashboard-section {
+  scroll-margin-top: 24px;
+}
+
+.dashboard-placeholder {
+  overflow-wrap: anywhere;
+}
+
+#logoutButton {
+  min-height: 46px;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+#logoutButton:not(:disabled):active {
+  transform: scale(.97);
+}
+
+@media (max-width: 380px) {
+  body:has(.dashboard-universes) .auth-card {
+    padding: 16px;
+  }
+
+  .dashboard-navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-navigation a {
+    justify-content: flex-start;
+    padding: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-navigation a,
+  .dashboard-universes .universe-card,
+  #logoutButton {
+    transition: none;
+  }
+}
+
+/* =====================================
+   B.E.R. — MESSAGERIE PRIVÉE
+===================================== */
+
+#messages .dashboard-placeholder {
+  display: grid;
+  gap: 12px;
+}
+
+#messages label {
+  color: #f3f6ff;
+  font-weight: 700;
+}
+
+#memberSelect,
+#messageInput {
+  width: 100%;
+  padding: 13px 14px;
+  color: #f3f6ff;
+  background: #0b1229;
+  border: 1px solid #39466e;
+  border-radius: 12px;
+  font: inherit;
+}
+
+#memberSelect option {
+  color: #f3f6ff;
+  background: #0b1229;
+}
+
+#messageInput {
+  min-height: 84px;
+  resize: vertical;
+}
+
+#memberSelect:focus-visible,
+#messageInput:focus-visible {
+  outline: 2px solid #8db4ff;
+  outline-offset: 2px;
+}
+
+#openConversationButton,
+#sendMessageButton {
+  min-height: 46px;
+  padding: 12px 20px;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(100deg, #456fe4, #7654d9);
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+#sendMessageButton {
+  justify-self: end;
+  min-width: 130px;
+}
+
+#openConversationButton:disabled,
+#sendMessageButton:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+#conversationMessages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 140px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 14px;
+  background: #0b1229;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px;
+}
+
+.ber-message {
+  max-width: 85%;
+  padding: 10px 13px;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+
+.ber-message strong,
+.ber-message small {
+  display: block;
+  font-size: 11px;
+  opacity: .75;
+}
+
+.ber-message p {
+  margin: 4px 0;
+  color: #f3f6ff;
+  white-space: pre-wrap;
+}
+
+.ber-message-own {
+  align-self: flex-end;
+  background: #3d4fc4;
+}
+
+.ber-message-other {
+  align-self: flex-start;
+  background: #1f2d4d;
+}
+
+/* =====================================
+   B.E.R. — PROFIL PROFESSIONNEL
+===================================== */
+
+#proProfileForm select,
+#proProfileForm textarea {
+  width: 100%;
+  padding: 14px;
+  color: #f3f6ff;
+  background: #0b1229;
+  border: 1px solid #39466e;
+  border-radius: 10px;
+  font: inherit;
+}
+
+#proProfileForm select option {
+  color: #f3f6ff;
+  background: #0b1229;
+}
+
+#proProfileForm textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+#proProfileForm input:focus-visible,
+#proProfileForm select:focus-visible,
+#proProfileForm textarea:focus-visible {
+  outline: 2px solid #8db4ff;
+  outline-offset: 2px;
+}
+
+#proProfileSave:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+#proProfileStatus {
+  min-height: 20px;
+  margin-top: 14px;
+  color: #91b7ff;
+  font-size: 13px;
+}
+/* =====================================
+   B.E.R. — ONGLETS DE L'ESPACE PERSONNEL
+===================================== */
+
+.dashboard-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 6px 0 4px;
+  padding: 6px;
+  background: #0b1229;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px;
+}
+
+.dashboard-tabs a {
+  flex: 1;
+  padding: 11px 6px;
+  color: #c8d5f0;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: background .2s ease, color .2s ease;
+}
+
+.dashboard-tabs a:hover {
+  color: #ffffff;
+  background: #192642;
+}
+
+.dashboard-tabs a.active {
+  color: #ffffff;
+  background: linear-gradient(100deg, #456fe4, #7654d9);
+}
+
+.dashboard-tabs a:focus-visible {
+  outline: 3px solid #8db4ff;
+  outline-offset: 2px;
+}
+
+.dashboard-panel[hidden] {
+  display: none;
+}
+
+@media (max-width: 380px) {
+  .dashboard-tabs a {
+    padding: 10px 3px;
+    font-size: 11px;
+  }
+}
+/* =====================================
+   B.E.R. — MARKETPLACE : VENDEUR ET BOUTIQUE
+===================================== */
+
+/* 4 onglets : disposition 2 x 2 sur mobile */
+.dashboard-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#sellerForm select,
+#shopForm select,
+#shopForm textarea {
+  width: 100%;
+  padding: 14px;
+  color: #f3f6ff;
+  background: #0b1229;
+  border: 1px solid #39466e;
+  border-radius: 10px;
+  font: inherit;
+}
+
+#sellerForm select option,
+#shopForm select option {
+  color: #f3f6ff;
+  background: #0b1229;
+}
+
+#shopForm textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+#sellerForm input:focus-visible,
+#sellerForm select:focus-visible,
+#shopForm input:focus-visible,
+#shopForm select:focus-visible,
+#shopForm textarea:focus-visible {
+  outline: 2px solid #8db4ff;
+  outline-offset: 2px;
+}
+
+#sellerForm input:disabled,
+#sellerForm select:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+#sellerSave:disabled,
+#shopSave:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+#sellerStatus,
+#shopStatus {
+  min-height: 20px;
+  margin-top: 14px;
+  color: #91b7ff;
+  font-size: 13px;
+}
+
+.seller-badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  color: #c8d5f0;
+  background: #192642;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.seller-badge[data-verified="true"] {
+  color: #9af0bd;
+  background: rgba(60, 180, 110, .14);
+  border-color: rgba(60, 180, 110, .45);
+}
+/* =====================================
+   B.E.R. — MESSAGERIE MOBILE RENFORCÉE
+===================================== */
+#messages .dashboard-placeholder.ber-chat-shell{padding:0;overflow:hidden;background:#0b1229;border-color:rgba(141,180,255,.2)}
+.ber-chat-toolbar{display:flex;flex-wrap:wrap;align-items:end;gap:10px;padding:14px;background:#111a32;border-bottom:1px solid var(--ber-border)}
+.ber-chat-toolbar .ber-chat-member{flex:1 1 190px;min-width:0}
+.ber-chat-toolbar label{display:block;margin-bottom:7px;color:#f3f6ff;font-weight:700}
+#berChatMember{width:100%;min-height:44px;padding:10px;color:#f3f6ff;background:#0b1229;border:1px solid #39466e;border-radius:10px;font:inherit}
+#berOpenChat{min-height:44px;padding:10px 16px;color:#fff;background:linear-gradient(100deg,#456fe4,#7654d9);border:0;border-radius:10px;font-weight:700}
+.ber-chat-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#141f3a;border-bottom:1px solid var(--ber-border)}
+.ber-chat-heading strong{color:#fff}.ber-chat-heading small{color:var(--ber-muted)}
+#berChatMessages{display:flex;flex-direction:column;gap:11px;height:min(58vh,560px);min-height:280px;overflow-y:auto;padding:16px;background:radial-gradient(ellipse at top,#111d3a,#0b1229 70%);overscroll-behavior:contain}
+.ber-chat-empty{margin:auto;color:var(--ber-muted);text-align:center;max-width:300px;line-height:1.6}
+.ber-chat-message{max-width:min(84%,560px);padding:10px 12px;border:1px solid rgba(255,255,255,.08);border-radius:15px;overflow-wrap:anywhere;box-shadow:0 5px 16px rgba(0,0,0,.12)}
+.ber-chat-message.own{align-self:flex-end;background:#3048a9;border-bottom-right-radius:5px}.ber-chat-message.other{align-self:flex-start;background:#1b2a49;border-bottom-left-radius:5px}
+.ber-chat-message p{margin:5px 0;color:#fff;white-space:pre-wrap;line-height:1.45}.ber-chat-meta{display:flex;justify-content:flex-end;gap:8px;align-items:center;color:#d1dcf5;font-size:11px;opacity:.82}
+.ber-chat-attachment{display:block;margin-top:8px;color:#dce7ff;text-decoration:underline;overflow-wrap:anywhere}.ber-chat-image{display:block;max-width:100%;max-height:240px;margin-top:8px;border-radius:10px;object-fit:contain;background:#080d20}
+.ber-chat-composer{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px;background:#111a32;border-top:1px solid var(--ber-border)}
+.ber-chat-composer textarea{grid-column:1/-1;width:100%;min-height:76px;max-height:160px;resize:vertical;padding:12px;color:#fff;background:#0b1229;border:1px solid #39466e;border-radius:12px;font:inherit}
+.ber-chat-composer textarea:focus-visible,#berChatMember:focus-visible,.ber-chat-composer button:focus-visible,.ber-chat-toolbar button:focus-visible{outline:2px solid #8db4ff;outline-offset:2px}
+.ber-chat-file-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;min-width:0}.ber-chat-file-row input{max-width:100%;color:var(--ber-muted);font-size:12px}
+#berSendChat{min-height:44px;padding:10px 18px;color:#fff;background:linear-gradient(100deg,#456fe4,#7654d9);border:0;border-radius:10px;font-weight:700}
+#berChatStatus{min-height:20px;margin:0;padding:0 14px 12px;color:#91b7ff;font-size:12px}
+#berSendChat:disabled,#berOpenChat:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:600px){#messages .dashboard-section{margin-top:18px}#messages .dashboard-section>h3{padding:0 3px}.ber-chat-toolbar{align-items:stretch}.ber-chat-toolbar button{width:100%}#berChatMessages{height:55vh;min-height:260px;padding:12px}.ber-chat-message{max-width:91%}.ber-chat-composer{grid-template-columns:1fr}.ber-chat-composer textarea{grid-column:1}.ber-chat-file-row{flex-direction:column;align-items:flex-start}#berSendChat{width:100%}}
+
+
+/* B.E.R. — INTERFACE DE CONVERSATION IMMERSIVE, INSPIRÉE DES MESSAGERIES MOBILES */
+#messages .dashboard-section > h3 { margin: 0 0 12px; }
+#messages .ber-chat-whatsapp {
+  padding: 0 !important; overflow: hidden; border-radius: 18px;
+  background: #091426 !important; border: 1px solid rgba(141,180,255,.22) !important;
+  box-shadow: 0 14px 36px rgba(0,0,0,.28);
+}
+.ber-chat-whatsapp .ber-chat-toolbar {
+  display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end;
+  gap: 8px; padding: 10px 12px; background: #101d35; border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.ber-chat-whatsapp .ber-chat-member label { display:block; margin:0 0 5px; color:#aebfe0; font-size:11px; }
+.ber-chat-whatsapp #berChatMember { min-height:39px; padding:8px 10px; border-radius:20px; font-size:13px; }
+.ber-chat-whatsapp #berOpenChat { min-height:39px; padding:8px 15px; border-radius:20px; white-space:nowrap; }
+.ber-chat-whatsapp .ber-chat-heading {
+  min-height:68px; display:flex; align-items:center; justify-content:flex-start; gap:12px;
+  padding:10px 15px; background:#14233d; border-bottom:1px solid rgba(255,255,255,.08);
+}
+.ber-chat-avatar { width:43px; height:43px; flex:0 0 43px; display:grid; place-items:center; border-radius:50%;
+  color:#fff; font-size:18px; font-weight:800; background:linear-gradient(135deg,#397be8,#7654d9); border:2px solid #6e9dff; }
+.ber-chat-title-group { min-width:0; display:flex; flex-direction:column; gap:4px; }
+.ber-chat-title-group strong { color:#fff; font-size:15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.ber-chat-title-group small { color:#a9bad8; font-size:11px; }
+.ber-chat-actions { margin-left:auto; color:#d6e2fa; font-size:19px; }
+.ber-chat-whatsapp #berChatMessages {
+  height:min(58vh,620px); min-height:330px; padding:17px 13px; gap:12px;
+  background-color:#0b1729;
+  background-image: radial-gradient(circle at 15% 20%,rgba(87,121,177,.09) 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 65%,rgba(87,121,177,.07) 0 2px,transparent 3px),
+    linear-gradient(145deg,#0c192b,#0a1424);
+  background-size:34px 34px,46px 46px,auto;
+}
+.ber-chat-whatsapp .ber-chat-message { max-width:84%; padding:9px 11px 7px; border:0; border-radius:14px; box-shadow:0 2px 7px rgba(0,0,0,.16); }
+.ber-chat-whatsapp .ber-chat-message.own { background:#254b9b; border-bottom-right-radius:4px; }
+.ber-chat-whatsapp .ber-chat-message.other { background:#1d2c43; border-bottom-left-radius:4px; }
+.ber-chat-whatsapp .ber-chat-message p { margin:2px 0 5px; font-size:14px; }
+.ber-chat-whatsapp .ber-chat-meta { font-size:10px; color:#c7d5ef; }
+.ber-chat-whatsapp .ber-chat-image { max-height:300px; border-radius:9px; }
+.ber-chat-whatsapp .ber-chat-composer {
+  display:grid; grid-template-columns:42px minmax(0,1fr) 46px; align-items:center; gap:7px;
+  padding:10px 11px 6px; background:#101d35; border-top:1px solid rgba(255,255,255,.07);
+}
+.ber-chat-whatsapp .ber-chat-attach { width:42px; height:42px; display:grid; place-items:center; border-radius:50%;
+  color:#d9e5fa; background:#1b2b47; font-size:22px; cursor:pointer; }
+.ber-chat-whatsapp #berChatFile { position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; pointer-events:none; }
+.ber-chat-whatsapp #berChatInput {
+  grid-column:auto; width:100%; min-height:43px; max-height:120px; resize:vertical; padding:11px 14px;
+  border:1px solid #334665; border-radius:23px; background:#1a2942; color:#fff; font-size:14px;
+}
+.ber-chat-whatsapp #berSendChat { width:44px; height:44px; min-height:44px; padding:0; border-radius:50%; font-size:21px; line-height:1; }
+.ber-chat-file-note { margin:0; padding:0 14px 5px; color:#8094b8; background:#101d35; font-size:10px; }
+.ber-chat-whatsapp #berChatStatus { padding:3px 13px 10px; background:#101d35; font-size:11px; }
+.ber-chat-whatsapp .ber-chat-empty { padding:12px 16px; border-radius:14px; background:rgba(20,35,61,.82); }
+@media(max-width:480px) {
+  #messages .ber-chat-whatsapp { border-radius:14px; }
+  .ber-chat-whatsapp .ber-chat-toolbar { padding:9px; }
+  .ber-chat-whatsapp #berChatMessages { height:57vh; min-height:300px; padding:13px 9px; }
+  .ber-chat-whatsapp .ber-chat-message { max-width:89%; }
+  .ber-chat-whatsapp .ber-chat-composer { grid-template-columns:38px minmax(0,1fr) 42px; gap:5px; padding:8px 7px 5px; }
+  .ber-chat-whatsapp .ber-chat-attach { width:38px; height:40px; }
+  .ber-chat-whatsapp #berSendChat { width:40px; height:40px; min-height:40px; }
+}

@@ -1,0 +1,280 @@
+
+/* B.E.R. PLATFORM - UNIVERSE DESIGN SYSTEM */
+
+:root {
+  --u-primary: #3978f6;
+  --u-secondary: #8055e8;
+  --u-gold: #f4c451;
+  --u-bg: #f3f6fd;
+  --u-card: #ffffff;
+  --u-text: #182440;
+  --u-muted: #68758e;
+  --u-border: #e3e9f4;
+}
+
+.universe-page {
+  min-height: 100vh;
+  background: var(--u-bg);
+  color: var(--u-text);
+  font-family: Arial, sans-serif;
+  transition: .3s;
+}
+
+.universe-page.dark {
+  --u-bg: #10172a;
+  --u-card: #19243b;
+  --u-text: #f4f6ff;
+  --u-muted: #b2bfd5;
+  --u-border: #303c55;
+}
+
+.universe-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 70px;
+  padding: 15px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--u-card);
+  border-bottom: 1px solid var(--u-border);
+}
+
+.universe-logo {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--u-primary);
+  text-decoration: none;
+}
+
+.universe-hero {
+  padding: 65px 7%;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 35px;
+  color: white;
+  background: linear-gradient(120deg, #10172a, #244c9b, #6744b7);
+}
+
+.universe-hero h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  margin-bottom: 18px;
+}
+
+.universe-hero p {
+  line-height: 1.8;
+  color: #e1e9ff;
+}
+
+.universe-hero img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.universe-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 55px 6%;
+}
+
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.universe-feature {
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--u-card);
+  border: 1px solid var(--u-border);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.universe-feature:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px #14264a20;
+}
+
+.universe-feature h3 {
+  margin: 15px 0;
+}
+
+.universe-feature p {
+  color: var(--u-muted);
+  line-height: 1.7;
+}
+
+.universe-icon {
+  font-size: 35px;
+}
+
+.universe-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(100deg, var(--u-primary), var(--u-secondary));
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.universe-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.12);
+}
+
+.universe-footer {
+  padding: 30px;
+  text-align: center;
+  color: white;
+  background: #10172a;
+}
+
+.universe-reveal {
+  animation: universeReveal .7s ease both;
+}
+
+@keyframes universeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 750px) {
+  .universe-hero {
+    grid-template-columns: 1fr;
+    padding: 45px 6%;
+    text-align: center;
+  }
+
+  .universe-hero img {
+    max-height: 230px;
+  }
+
+  .universe-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.universe-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.universe-header nav a {
+  color: var(--u-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.universe-header nav a:hover {
+  color: var(--u-primary);
+}
+
+.universe-animation {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+#featureDetails {
+  margin-top: 30px;
+}
+
+#featureDetails:empty {
+  display: none;
+}
+
+@media(max-width: 750px) {
+  .universe-header {
+    flex-wrap: wrap;
+  }
+
+  .universe-header nav {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+
+/* B.E.R. — NAVIGATION COMMUNE */
+
+.ber-universe-nav {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 16px 5%;
+  background: #0b1229;
+  border-bottom: 1px solid rgba(139, 121, 255, 0.3);
+}
+
+.ber-logo {
+  color: #d8b75b;
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-decoration: none;
+}
+
+.ber-universe-nav nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.ber-universe-nav nav a {
+  color: #e5e9fa;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.25s;
+}
+
+.ber-universe-nav nav a:hover {
+  color: #d8b75b;
+}
+
+.ber-universe-nav nav .ber-login {
+  padding: 9px 15px;
+  border-radius: 9px;
+  background: linear-gradient(100deg, #6552d9, #3579dc);
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .ber-universe-nav {
+    justify-content: center;
+  }
+
+  .ber-universe-nav nav {
+    gap: 12px;
+  }
+}
+
+

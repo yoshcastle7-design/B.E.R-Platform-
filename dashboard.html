@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d20">
+  <title>Mon espace | B.E.R. Platform</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./universe.css">
+  <link rel="stylesheet" href="./dashboard.css">
+  <link rel="stylesheet" href="./ber-calls.css">
+</head>
+<body>
+  <main class="auth-container dashboard-container">
+    <header class="auth-header"><h1>B.E.R.</h1><p>Votre espace personnel</p></header>
+
+    <nav class="dashboard-navigation" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./pages/business.html">Business</a>
+      <a href="./pages/education.html">Éducation</a>
+      <a href="./pages/relations.html">Relations</a>
+      <a href="./index.html#dynamicContent">B.E.R. AI</a>
+    </nav>
+
+    <section class="auth-card dashboard-main">
+      <h2>Bienvenue sur B.E.R. !</h2>
+      <p id="userEmail">Chargement du profil...</p>
+      <p id="dashboardMessage" role="status" aria-live="polite"></p>
+
+      <nav class="dashboard-tabs" id="dashboardTabs" aria-label="Sections de votre espace">
+        <a href="#accueil" data-tab="accueil">🏠 Mon espace</a>
+        <a href="#messages" data-tab="messages">💬 Messages</a>
+        <a href="#boutique" data-tab="boutique">🛍️ Boutique</a>
+        <a href="#parametres" data-tab="parametres">⚙️ Paramètres</a>
+      </nav>
+
+      <div class="dashboard-panel" data-panel="accueil">
+        <section id="univers" class="dashboard-section">
+          <h3>Explorez vos univers</h3>
+          <div class="dashboard-universes">
+            <a href="./pages/business.html" class="universe-card"><h3>💼 Business</h3><p>Entrepreneuriat, projets et opportunités.</p></a>
+            <a href="./pages/education.html" class="universe-card"><h3>🎓 Éducation</h3><p>Apprentissage, formations et compétences.</p></a>
+            <a href="./pages/relations.html" class="universe-card"><h3>🤝 Relations professionnelles</h3><p>Emploi, recrutement et carrière.</p></a>
+          </div>
+        </section>
+        <section class="dashboard-section">
+          <h3>Accès rapides</h3>
+          <div class="dashboard-universes">
+            <a href="./index.html#dynamicContent" class="universe-card"><h3>🤖 B.E.R. AI</h3><p>Accéder à votre assistant intelligent.</p></a>
+            <a href="#messages" class="universe-card"><h3>💬 Messagerie privée</h3><p>Écrire à un autre membre de la plateforme.</p></a>
+            <a href="#profil" class="universe-card"><h3>👤 Mon profil</h3><p>Gérer votre profil professionnel.</p></a>
+            <a href="#boutique" class="universe-card"><h3>🛍️ Ma boutique</h3><p>Gérer votre profil vendeur et votre boutique.</p></a>
+          </div>
+        </section>
+      </div>
+
+      <!-- MESSAGERIE PRIVÉE : le module messaging.js gère ces éléments -->
+      <div class="dashboard-panel" data-panel="messages" hidden>
+        <section id="messages" class="dashboard-section">
+          <h3>💬 Messagerie privée</h3>
+          <div class="dashboard-placeholder ber-chat-shell ber-chat-whatsapp">
+            <div class="ber-chat-toolbar">
+              <div class="ber-chat-member">
+                <label for="berChatMember">Choisir un contact</label>
+                <select id="berChatMember"><option value="">Chargement des membres…</option></select>
+              </div>
+              <button type="button" id="berOpenChat">Ouvrir</button>
+            </div>
+            <div class="ber-chat-heading">
+              <div class="ber-chat-avatar" aria-hidden="true">B</div>
+              <div class="ber-chat-title-group">
+                <strong id="berChatName">B.E.R. Messages</strong>
+                <small id="berChatHint">Choisissez un contact pour discuter</small>
+              </div>
+              <div class="ber-chat-actions" aria-label="Options de conversation"><span title="Messagerie privée">🔒</span></div>
+            </div>
+            <div id="berChatMessages" aria-live="polite" aria-label="Messages de la conversation">
+              <p class="ber-chat-empty">Vos conversations privées apparaîtront ici.</p>
+            </div>
+            <div class="ber-chat-composer">
+              <label class="ber-chat-attach" for="berChatFile" title="Joindre une photo ou un fichier" aria-label="Joindre une photo ou un fichier">📎</label>
+              <input type="file" id="berChatFile" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,audio/webm,audio/ogg,audio/mpeg,audio/mp4,audio/wav,application/pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.zip">
+              <textarea id="berChatInput" maxlength="5000" rows="1" placeholder="Écrire un message…" aria-label="Votre message"></textarea>
+              <button type="button" id="berSendChat" aria-label="Envoyer le message" title="Envoyer">➤</button>
+            </div>
+            <p class="ber-chat-file-note">Pièces jointes privées · 15 Mo maximum</p>
+            <p id="berChatStatus" role="status" aria-live="polite">Initialisation de la messagerie…</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="dashboard-panel" data-panel="boutique" hidden>
+        <section id="boutique" class="dashboard-section">
+          <h3>🛍️ Profil vendeur</h3>
+          <div class="dashboard-placeholder">
+            <p id="sellerVerification" class="seller-badge" data-verified="false">Chargement...</p>
+            <p>Ce profil est visible par les membres connectés. Le statut « vérifié » est attribué par l'administrateur. Une fois vérifié, le nom et le type ne sont plus modifiables.</p>
+            <form id="sellerForm">
+              <label for="sellerType">Je vends en tant que</label>
+              <select id="sellerType"><option value="particulier">Particulier</option><option value="entreprise">Entreprise</option></select>
+              <label for="sellerName">Nom du vendeur ou de l'entreprise</label>
+              <input type="text" id="sellerName" maxlength="80" minlength="2" required>
+              <label for="sellerAvatar">Photo du profil vendeur ou logo</label>
+              <input type="file" id="sellerAvatar" accept="image/jpeg,image/png,image/webp">
+              <p>Formats acceptés : JPG, PNG ou WebP. Maximum : 2 Mo.</p>
+              <img id="sellerAvatarPreview" alt="Aperçu de la photo du profil vendeur" hidden style="width:110px;height:110px;object-fit:cover;border-radius:50%;">
+              <label for="sellerCity">Ville</label>
+              <input type="text" id="sellerCity" maxlength="80" placeholder="Ex. : Ouagadougou">
+              <button type="submit" id="sellerSave">Enregistrer mon profil vendeur</button>
+              <p id="sellerStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+        <section id="shopSection" class="dashboard-section" hidden>
+          <h3>🏪 Ma boutique</h3>
+          <div class="dashboard-placeholder">
+            <form id="shopForm">
+              <label for="shopName">Nom de la boutique</label>
+              <input type="text" id="shopName" maxlength="80" minlength="2" required>
+              <label for="shopCategory">Catégorie</label>
+              <input type="text" id="shopCategory" maxlength="60" placeholder="Ex. : Mode, Alimentation, Électronique">
+              <label for="shopDescription">Description</label>
+              <textarea id="shopDescription" maxlength="800" rows="5" placeholder="Ce que vous vendez, votre savoir-faire..."></textarea>
+              <label for="shopActive">État de la boutique</label>
+              <select id="shopActive"><option value="true">Ouverte (visible)</option><option value="false">Fermée (masquée)</option></select>
+              <button type="submit" id="shopSave">Enregistrer ma boutique</button>
+              <p id="shopStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <div class="dashboard-panel" data-panel="parametres" hidden>
+        <section id="profil" class="dashboard-section">
+          <h3>👤 Mon profil professionnel</h3>
+          <div class="dashboard-placeholder">
+            <p>Ce profil est visible par les membres connectés. N'y indiquez ni téléphone ni e-mail : le contact passe par la messagerie.</p>
+            <form id="proProfileForm">
+              <label for="proDisplayName">Nom affiché</label>
+              <input type="text" id="proDisplayName" maxlength="60" minlength="2" autocomplete="name" required>
+              <label for="proAccountType">Je suis</label>
+              <select id="proAccountType"><option value="candidat">Candidat</option><option value="recruteur">Recruteur / Entreprise</option></select>
+              <label for="proHeadline">Titre professionnel</label>
+              <input type="text" id="proHeadline" maxlength="100" placeholder="Ex. : Comptable junior">
+              <label for="proCity">Ville</label>
+              <input type="text" id="proCity" maxlength="80" placeholder="Ex. : Ouagadougou">
+              <label for="proAvatar">Photo de profil professionnel</label>
+              <input type="file" id="proAvatar" accept="image/jpeg,image/png,image/webp">
+              <p>Formats acceptés : JPG, PNG ou WebP. Maximum : 2 Mo.</p>
+              <img id="proAvatarPreview" alt="Aperçu de la photo professionnelle" hidden style="width:110px;height:110px;object-fit:cover;border-radius:50%;">
+              <label for="proBio">Présentation</label>
+              <textarea id="proBio" maxlength="800" rows="5" placeholder="Parcours, domaine, objectifs..."></textarea>
+              <label for="proSkills">Compétences (séparées par des virgules)</label>
+              <input type="text" id="proSkills" maxlength="300" placeholder="Ex. : Comptabilité, Excel, Gestion de projet">
+              <div id="proAvailabilityField"><label for="proAvailability">Disponibilité</label><select id="proAvailability"><option value="">Non précisée</option><option value="disponible">Disponible</option><option value="en_poste">En poste</option><option value="non_disponible">Non disponible</option></select></div>
+              <div id="proOrganizationField" hidden><label for="proOrganization">Entreprise / Organisation</label><input type="text" id="proOrganization" maxlength="120"></div>
+              <button type="submit" id="proProfileSave">Enregistrer mon profil</button>
+              <p id="proProfileStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+        <section id="parametres" class="dashboard-section">
+          <h3>⚙️ Paramètres</h3>
+          <div class="dashboard-placeholder"><p>Les paramètres de votre compte seront disponibles ici.</p></div>
+        </section>
+      </div>
+
+      <div class="dashboard-actions"><button type="button" id="logoutButton">Se déconnecter</button></div>
+    </section>
+    <footer><p>© 2026 B.E.R. Platform — Version 0.0.0.1</p></footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./supabase.js"></script>
+  <script src="./auth.js"></script>
+  <script src="./dashboard.js"></script>
+  <script src="./messaging.js"></script>
+  <script src="./ber-calls.js"></script>
+</body>
+</html>

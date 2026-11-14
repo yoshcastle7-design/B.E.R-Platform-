@@ -1,0 +1,78 @@
+/* B.E.R. PLATFORM — styles du module d'appels */
+.ber-chat-actions .ber-call-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  margin: 3px;
+  padding: 8px 12px;
+  border: 1px solid rgba(130, 166, 255, .38);
+  border-radius: 10px;
+  color: #eaf0ff;
+  background: #1a2b4b;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ber-chat-actions .ber-call-action:focus-visible,
+.ber-call-panel button:focus-visible {
+  outline: 2px solid #9fc0ff;
+  outline-offset: 3px;
+}
+.ber-call-panel[hidden] { display: none !important; }
+.ber-call-panel {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(4, 9, 20, .78);
+}
+.ber-call-card {
+  width: min(100%, 520px);
+  max-height: min(90vh, 760px);
+  overflow: auto;
+  padding: 18px;
+  color: #f4f7ff;
+  background: #101a30;
+  border: 1px solid rgba(160, 185, 235, .25);
+  border-radius: 18px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.45);
+}
+.ber-call-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.ber-call-top strong { font-size: 17px; }
+.ber-call-top p { margin: 6px 0 0; color:#b8c8e8; font-size:14px; }
+.ber-call-close {
+  width: 34px; height: 34px; border:0; border-radius:50%;
+  color:#eaf0ff; background:#263754; font-size:23px; cursor:pointer;
+}
+.ber-call-videos {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 16px;
+}
+.ber-call-videos[hidden] { display:none; }
+.ber-call-videos video {
+  width:100%; min-height:120px; max-height:260px; object-fit:cover;
+  background:#050a14; border-radius:12px;
+}
+#berCallRemoteAudio { display:none; }
+.ber-call-controls { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.ber-call-button {
+  flex:1 1 120px; min-height:44px; padding:10px 14px;
+  border:0; border-radius:11px; color:#fff; background:#31558d;
+  font:inherit; font-weight:700; cursor:pointer;
+}
+.ber-call-button.success { background:#167447; }
+.ber-call-button.danger { background:#a83242; }
+.ber-call-note { margin:14px 0 0; color:#9fb0cf; font-size:12px; line-height:1.5; }
+@media (max-width:420px) {
+  .ber-call-card { padding:14px; }
+  .ber-call-videos { grid-template-columns:1fr; }
+  .ber-call-videos video { max-height:220px; }
+}

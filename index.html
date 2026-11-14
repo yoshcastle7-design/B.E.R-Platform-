@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10172A">
+  <title>B.E.R. Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="app">
+    
+<header class="header">
+  <a href="#" class="logo">B.E.R.<span> Platform</span></a>
+
+ 
+<nav class="main-nav" id="mainNav">
+
+  <a href="#" class="nav-link active" data-nav="home">
+    Accueil
+  </a>
+
+  <a href="./pages/business.html" class="nav-link">
+    Business
+  </a>
+
+  <a href="./pages/education.html" class="nav-link">
+    Éducation
+  </a>
+
+  <a href="./pages/relations.html" class="nav-link">
+    Relations
+  </a>
+  <a href="marketplace/marketplace.html"
+   class="nav-link">
+  Marketplace
+</a>
+
+  <a href="#dynamicContent" class="nav-link" data-nav="ai">
+    B.E.R. AI
+  </a>
+
+  <a href="./login.html" class="nav-login">
+    Connexion
+  </a>
+
+</nav>
+
+
+  <div class="header-actions">
+    <button id="themeToggle" aria-label="Changer de thème">🌙</button>
+    <button id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
+
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">BUSINESS • EDUCATION • RELATIONS</p>
+        <h1>Construisons ensemble <span>vos opportunités.</span></h1>
+        <p class="hero-text">
+          Une plateforme pour apprendre, entreprendre,
+          travailler et développer vos projets.
+        </p>
+        <button id="exploreBtn" class="primary-btn">
+          Explorer la plateforme →
+        </button>
+      </section>
+
+      <section class="universes" id="universes">
+        <h2>Découvrez nos univers</h2>
+        <div class="universe-grid">
+          <article class="universe-card">
+            <img class="universe-gif"
+src="assets/gifs/ber-business.gif"
+alt="Illustration animée Business">
+            <h3>Business</h3>
+            <p>Entrepreneuriat, boutiques et financement participatif.</p>
+            <button data-section="business">Découvrir →</button>
+          </article>
+
+          <article class="universe-card">
+            <img class="universe-gif"
+src="assets/gifs/ber-education.gif"
+alt="Illustration animée Éducation">
+            <h3>Education</h3>
+            <p>Formations, cours, quiz et apprentissage avec B.E.R. AI.</p>
+            <button data-section="education">Découvrir →</button>
+          </article>
+
+          <article class="universe-card">
+            <img class="universe-gif"
+src="assets/gifs/ber-relations.gif"
+alt="Illustration animée Relations">
+            <h3>Relations</h3>
+            <p>Emploi, recrutement, événements et communauté.</p>
+            <button data-section="relations">Découvrir →</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="dynamicContent" class="dynamic-content">
+        <h2>Bienvenue sur B.E.R. Platform</h2>
+        <p>Choisissez un univers pour commencer.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 B.E.R. Platform — Tous droits réservés.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
